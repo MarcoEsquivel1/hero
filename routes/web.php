@@ -1,5 +1,6 @@
 <?php
 
+namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,7 +18,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/home/{name}', function ($name) {
-    return view('home', ['name' => $name]);
-    //return "Hola " . $name . "! Como estas hoy?";
-})->where('name', '[A-Za-z]+');;
+Route::group(['prefix'=> 'admin'], function(){
+    Route::get('/', [AdminController::class, 'index'])->name('admin');
+    Route::get('heroes', [HeroController::class, 'index'])->name('admin.heroes');
+    Route::get('items', [ItemController::class, 'index'])->name('admin.items');
+    Route::get('enemies', [EnemyController::class, 'index'])->name('admin.enemies');
+});
