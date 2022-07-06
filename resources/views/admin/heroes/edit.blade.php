@@ -3,8 +3,9 @@
 @section('content')
     <h1>Editar Heroe</h1>
 
-    <form action="{{route('admin.heroes.update', ['id'=> $hero->id])}}" method="POST">
+    <form action="{{route('heroes.update', ['hero'=> $hero->id])}}" method="POST">
         @csrf
+        @method('PUT')
         <div class="mb-3">
             <label for="name" class="form-label">Nombre</label>
             <input type="text" class="form-control" id="name" name="name" value="{{$hero->name}}" placeholder="Ingrese un nombre" required>

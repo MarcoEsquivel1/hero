@@ -7,7 +7,7 @@
 
     <div class="row my-3">
         <div class="col-auto">
-            <a class="btn  btn-primary" href="{{route('admin.heroes.create')}}" role="button">Crear</a>
+            <a class="btn  btn-primary" href="{{route('heroes.create')}}" role="button">Crear</a>
         </div>
     </div>
 
@@ -40,7 +40,7 @@
                         <td>
                             <div class="row">
                                 <div class="col-auto">
-                                    <a class="btn  btn-warning" href="{{route('admin.heroes.edit', ['id'=> $hero->id]) }}" role="button">Modificar</a>
+                                    <a class="btn  btn-warning" href="{{route('heroes.edit', ['hero'=> $hero->id]) }}" role="button">Modificar</a>
                                 </div>
                                 <div class="col-auto">
                                     <!-- Button trigger modal -->
@@ -61,7 +61,7 @@
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                                                    <form action="{{route('admin.heroes.destroy', ['id'=>$hero->id]) }}" method="POST">
+                                                    <form action="{{route('heroes.destroy', ['hero'=>$hero->id]) }}" method="POST">
                                                         @csrf
                                                         @method('DELETE')
                                                         <button class="btn  btn-danger" type="submit">Borrar </button>
