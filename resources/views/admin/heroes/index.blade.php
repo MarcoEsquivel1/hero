@@ -64,7 +64,7 @@
                                                     <form action="{{route('heroes.destroy', ['hero'=>$hero->id]) }}" method="POST">
                                                         @csrf
                                                         @method('DELETE')
-                                                        <button class="btn  btn-danger" type="submit">Borrar </button>
+                                                        <button class="btn  btn-danger" type="submit">Aceptar </button>
                                                     </form>
                                                 </div>
                                             </div>

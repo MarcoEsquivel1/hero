@@ -23,9 +23,9 @@ class HeroController extends Controller
     }
 
     public function edit($id){
-        $heroes = Hero::find($id);
+        $hero = Hero::find($id);
 
-        return view('admin.heroes.edit', ['hero' => $heroes]);
+        return view('admin.heroes.edit', ['hero' => $hero]);
     }
 
     public function update(Request $request, $id){
@@ -34,28 +34,28 @@ class HeroController extends Controller
 
     public function saveHero(Request $request, $id){
         if($id){
-            $heroes = Hero::find($id);
+            $hero = Hero::find($id);
         }else{
-            $heroes = new Hero();
-            $heroes->xp = 0;
-            $heroes->level_id = 1;
+            $hero = new Hero();
+            $hero->xp = 0;
+            $hero->level_id = 1;
         }
 
-        $heroes->name = $request->input('name');
-        $heroes->hp = $request->input('hp');
-        $heroes->atq = $request->input('atq');
-        $heroes->def = $request->input('def');
-        $heroes->luck = $request->input('luck');
-        $heroes->coins = $request->input('coins');
+        $hero->name = $request->input('name');
+        $hero->hp = $request->input('hp');
+        $hero->atq = $request->input('atq');
+        $hero->def = $request->input('def');
+        $hero->luck = $request->input('luck');
+        $hero->coins = $request->input('coins');
 
-        $heroes->save();
+        $hero->save();
 
         return redirect()->route('heroes.index');
     }
 
     public function destroy($id){
-        $heroes = Hero::find($id);
-        $heroes->delete();
+        $hero = Hero::find($id);
+        $hero->delete();
         return redirect()->route('heroes.index');
     }
 }

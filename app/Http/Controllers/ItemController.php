@@ -59,7 +59,9 @@ class ItemController extends Controller
      */
     public function edit($id)
     {
-        //
+        $item = Item::find($id);
+
+        return view('admin.items.edit', ['item' => $item]);
     }
 
     /**
@@ -80,10 +82,12 @@ class ItemController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
-        //
+    public function destroy($id){
+        $item = Item::find($id);
+        $item->delete();
+        return redirect()->route('items.index');
     }
+
 
     public function saveItem(Request $request, $id){
         if($id){
