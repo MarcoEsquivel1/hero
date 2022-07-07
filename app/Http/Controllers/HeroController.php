@@ -50,12 +50,12 @@ class HeroController extends Controller
 
         $hero->save();
 
-        return redirect()->route('heroes.index');
+        return redirect()->route('hero.index');
     }
 
     public function destroy($id){
         $hero = Hero::find($id);
         $hero->delete();
-        return redirect()->route('heroes.index');
+        return redirect()->route('hero.index');
     }
 }

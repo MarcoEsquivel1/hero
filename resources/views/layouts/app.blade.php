@@ -21,15 +21,19 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="{{route('heroes.index')}}">Heroes</a>
+                        <a class="nav-link" href="{{route('hero.index')}}">Heroes</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="{{route('items.index')}}">Items</a>
+                        <a class="nav-link" href="{{route('item.index')}}">Items</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="{{route('admin.enemies')}}">Enemigos</a>
+                        <a class="nav-link" href="{{route('enemy.index')}}">Enemigos</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{route('admin.bs')}}">Sistema de Batalla</a>
                     </li>
                 </ul>
             </div>

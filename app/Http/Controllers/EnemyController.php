@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Enemy;
 use Illuminate\Http\Request;
 
 class EnemyController extends Controller
@@ -13,7 +14,8 @@ class EnemyController extends Controller
      */
     public function index()
     {
-        //
+        $enemies = Enemy::all();
+        return view('admin.enemies.index', ['enemies'=> $enemies]);
     }
 
     /**
@@ -23,7 +25,7 @@ class EnemyController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.enemies.create');
     }
 
     /**
@@ -34,7 +36,7 @@ class EnemyController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return $this->saveEnemy($request, null);
     }
 
     /**
@@ -56,7 +58,9 @@ class EnemyController extends Controller
      */
     public function edit($id)
     {
-        //
+        $enemy = Enemy::find($id);
+
+        return view('admin.enemies.edit', ['enemy' => $enemy]);
     }
 
     /**
@@ -68,7 +72,7 @@ class EnemyController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        return $this->saveEnemy($request, $id);
     }
 
     /**
@@ -79,6 +83,27 @@ class EnemyController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $enemy = Enemy::find($id);
+        $enemy->delete();
+        return redirect()->route('enemy.index');
+    }
+
+    public function saveEnemy(Request $request, $id){
+        if($id){
+            $enemy = Enemy::find($id);
+        }else{
+            $enemy = new Enemy();
+        }
+
+        $enemy->name = $request->input('name');
+        $enemy->hp = $request->input('hp');
+        $enemy->atq = $request->input('atq');
+        $enemy->def = $request->input('def');
+        $enemy->coins = $request->input('coins');
+        $enemy->xp = $request->input('xp');
+
+        $enemy->save();
+
+        return redirect()->route('enemy.index');
     }
 }

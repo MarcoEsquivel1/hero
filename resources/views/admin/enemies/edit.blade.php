@@ -1,13 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
-    <h1>Editar Item - {{$item->name}}</h1>
+    <h1>Editar Enemigo - {{$enemy->name}}</h1>
 
-    <form action="{{route('item.update', ['item'=> $item->id])}}" method="POST">
+    <form action="{{route('enemy.update', ['enemy'=> $enemy->id])}}" method="POST">
         @method('PUT')
         
-        @include('admin.items.form')
-        
+        @include('admin.enemies.form')
+
         <button type="submit" class="btn btn-warning">Editar</button>
     </form>
 @endsection

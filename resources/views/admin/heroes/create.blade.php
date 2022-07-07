@@ -3,7 +3,7 @@
 @section('content')
     <h1>Crear Nuevo Heroe</h1>
 
-    <form action="{{route('heroes.store')}}" method="POST">
+    <form action="{{route('hero.store')}}" method="POST">
         @csrf
         <div class="mb-3">
             <label for="name" class="form-label">Nombre</label>
