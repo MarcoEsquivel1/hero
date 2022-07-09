@@ -28,3 +28,8 @@
     <label for="xp" class="form-label">Experiencia</label>
     <input type="number" class="form-control" id="xp" name="xp" @isset($enemy) value="{{$enemy->xp}}" @endisset placeholder="Ingrese la experiencia" required>
 </div>
+
+<div class="mb-3">
+    <label for="img_path" class="form-label">Imagen</label>
+    <input type="file" class="form-control" id="img_path" name="img_path" @isset($enemy) value="{{$enemy->img_path}}" @endisset placeholder="Ingrese la experiencia" required>
+</div>

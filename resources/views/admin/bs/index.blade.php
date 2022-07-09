@@ -6,8 +6,8 @@
     </div>
 
     <div class="row text-center text-white mt-3">
-        <div class="col bg-primary">
-            <h2>HERO</h2>
+        <div class="col-5 bg-primary">
+            <h2>{{$heroName}}</h2>
             
         </div>
 
@@ -16,8 +16,8 @@
             
         </div>
 
-        <div class="col bg-danger">
-            <h2>ENEMY</h2>
+        <div class="col-5 bg-danger">
+            <h2>{{$enemyName}}</h2>
         
         </div>
     </div>
@@ -29,13 +29,11 @@
     </div>
 
     <div class="mt-3">
-        <div class="alert alert-success" role="alert">
-            Hero hace un ataque de 15 a Enemigo
-        </div>
-
-        <div class="alert alert-danger" role="alert">
-            Enemigo da;a a Hero con 10 puntos...
-        </div>
+        @foreach ($events as $ev)
+            <div class='alert @if($ev["winner"] == "hero") alert-success @else alert-danger @endif' role="alert">
+                {{$ev["text"]}}
+            </div>
+        @endforeach
     </div>
 
 @endsection
