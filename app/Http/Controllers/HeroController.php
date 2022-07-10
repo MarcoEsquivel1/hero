@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Hero;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 class HeroController extends Controller
 {
@@ -48,6 +49,14 @@ class HeroController extends Controller
         $hero->luck = $request->input('luck');
         $hero->coins = $request->input('coins');
 
+        if($request->hasFile('img_path')){
+            $file = $request->file('img_path');
+            $name = time() . "_". $file->getClientOriginalName();
+            $file->move(public_path() . '\\images\\heroes\\', $name);
+
+            $hero->img_path = $name;
+        }
+
         $hero->save();
 
         return redirect()->route('hero.index');
@@ -55,6 +64,10 @@ class HeroController extends Controller
 
     public function destroy($id){
         $hero = Hero::find($id);
+
+        $file_path = public_path() . "\\images\\heroes\\" . $hero->img_path;
+        File::delete($file_path);
+
         $hero->delete();
         return redirect()->route('hero.index');
     }

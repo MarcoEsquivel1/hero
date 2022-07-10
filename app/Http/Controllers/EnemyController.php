@@ -87,7 +87,6 @@ class EnemyController extends Controller
         $enemy = Enemy::find($id);
 
         $file_path = public_path() . "\\images\\enemies\\" . $enemy->img_path;
-        //dd($file_path);
         File::delete($file_path);
 
         $enemy->delete();

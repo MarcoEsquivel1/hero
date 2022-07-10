@@ -15,7 +15,7 @@ class BSController extends Controller
     }
 
 
-    public function runAutoBattle($heroId, $enemyId){
+    public static function runAutoBattle($heroId, $enemyId){
         $hero = Hero::find($heroId);
         $enemy = Enemy::find($enemyId);
 
@@ -85,7 +85,9 @@ class BSController extends Controller
         return [
             "events" => $events,
             "heroName" => $hero->name,
-            "enemyName" => $enemy->name
+            "enemyName" => $enemy->name,
+            "heroAvatar" => $hero->img_path,
+            "enemyAvatar" => $enemy->img_path
         ];
     }
 
